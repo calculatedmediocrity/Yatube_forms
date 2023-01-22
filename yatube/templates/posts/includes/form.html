@@ -1,3 +1,4 @@
+{% load user_filters %}
 <form method="post" {% if action_url %} action="{% url action_url %}" {% endif %}>
   {% csrf_token %}
   {% for field in form %}
@@ -23,7 +24,7 @@
       {% endif %}
     </div>
   </div>
-   endfor %}
+   {% endfor %}
   <div class="d-flex justify-content-end">
     <button type="submit" class="btn btn-primary">
     {% if is_edit%}Сохранить{% else %}Добавить{% endif%}
