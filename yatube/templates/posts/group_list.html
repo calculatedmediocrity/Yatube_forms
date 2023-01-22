@@ -3,19 +3,16 @@
 {% block title %}Записи сообщества {{ group.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ group.title }}</h1>
-<p>{{ group.description|linebreaks }}</p>
+
 <div class="container py-5">
-  <h1>{{group.description}}</h1>
-  <p>
-    {{ group.title }}
-  </p>
-    <article>
-      {% for post in page_obj %}
-          {% include 'includes/main_post.html' %}
-          {% if not forloop.last %}<hr>{% endif %}
-      {% endfor %}
-     </article>
-    {% include 'posts/includes/paginator.html' %}
+  <p>{{ group.description|linebreaks }}</p>
+
+  {% for post in page_obj %}
+    {% include "posts/includes/main_post.html" with show_author_link=True %}
+  {% endfor %}
+
+  {% if page_obj.has_other_pages %}
+    {% include "posts/includes/paginator.html" %}
+  {% endif %}
 </div>
 {%endblock%}
