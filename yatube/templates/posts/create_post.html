@@ -4,6 +4,7 @@
 {% if is_edit %}Редактировать запись{% else %}Добавить запись{% endif %}
 {% endblock %}
 
+{% load user_filters %}
 {% block content %}
     <main>
       <div class="container py-5">
@@ -14,7 +15,22 @@
                 {% if is_edit%}Редактировать пост{% else %}Новый пост{% endif%}
               </div>
               <div class="card-body">
-                {% include "posts/includes/form.html" %}
+
+                <form method="post" {% if action_url %} action="{% url action_url %}" {% endif %}>
+
+                  {% for field in form %}
+                    {% include "includes/form.html" %}
+                  {% endfor %}
+
+                  <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">
+                      {% if is_edit %}
+                        Сохранить
+                      {% else %}
+                        Публиковать
+                      {% endif %}
+                    </button>
+
                   </div>
                 </form>
               </div>

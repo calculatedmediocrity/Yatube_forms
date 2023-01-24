@@ -34,7 +34,6 @@ def profile(request, username):
     context = {
         'user_profile': user_profile,
         'page_obj': get_page_obj(request, post_list),
-        'hide_author_link': True
     }
     return render(request,
                   'posts/profile.html',
