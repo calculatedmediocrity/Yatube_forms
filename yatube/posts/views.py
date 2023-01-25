@@ -3,14 +3,13 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Post, Group, User
 from .forms import PostForm
-from . utils import get_page_obj
+from .utils import get_page_obj
 
 
 def index(request):
     post_list = Post.objects.all()
     context = {
         'page_obj': get_page_obj(request, post_list),
-
     }
     return render(request, 'posts/index.html', context)
 
@@ -35,16 +34,17 @@ def profile(request, username):
         'user_profile': user_profile,
         'page_obj': get_page_obj(request, post_list),
     }
-    return render(request,
-                  'posts/profile.html',
-                  context)
+
+    return render(
+        request,
+        'posts/profile.html',
+        context
+    )
 
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    context = {
-        'post': post
-    }
+    context = {'post': post}
     return render(request, 'posts/post_detail.html', context)
 
 

@@ -9,7 +9,7 @@
   <p>{{ group.description|linebreaks }}</p>
 
   {% for post in page_obj %}
-    {% include "posts/includes/main_post.html" with show_author_link=True %}
+    {% include "posts/includes/main_post.html" with show_author_link=True show_group_link=False %}
   {% endfor %}
 
   {% if page_obj.has_other_pages %}

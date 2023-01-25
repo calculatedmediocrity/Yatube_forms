@@ -16,6 +16,8 @@
               </div>
               <div class="card-body">
 
+                {% include "includes/error_check.html" %}
+
                 <form method="post" {% if action_url %} action="{% url action_url %}" {% endif %}>
 
                   {% for field in form %}

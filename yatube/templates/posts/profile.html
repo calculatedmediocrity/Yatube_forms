@@ -6,7 +6,7 @@
   <h3>Всего постов: {{ user.posts.count }} </h3>
 
   {% for post in page_obj %}
-    {% include "posts/includes/main_post.html" with show_author_link=False%}
+    {% include "posts/includes/main_post.html" with show_author_link=False show_group_link=True %}
   {% endfor %}
 
   {% if page_obj.has_other_pages %}
